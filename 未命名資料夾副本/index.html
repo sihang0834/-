@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林思行的 AR 名片</title>
+    <!-- 引入 A-Frame 和 MindAR 核心庫 -->
+    <script src="https://aframe.io"></script>
+    <script src="https://jsdelivr.net"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    
+    <!-- 讀取名片辨識檔 targets.mind -->
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, sortObjects: true" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      
+      <a-assets>
+        <!-- 預先載入要顯示的第二張直式圖片 -->
+        <!-- 如果你的圖片副檔名是 .jpg，請把下面的 content.png 改成 content.jpg -->
+        <img id="my-content" src="./content.png">
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- 當手機對準第一張橫式名片時 -->
+      
+        
+        <!-- 顯示第二張直式圖片 -->
+        <!-- position="0 0 0.05" 代表讓圖片微微浮在名片上方，避免破面 -->
+        <!-- width="0.7" height="1" 是專門為你第二張直式插畫調整的完美比例，不會變形 -->
+        <a-image src="#my-content" position="0 0 0.05" width="0.7" height="1"></a-image>
+        
+      
+    </a-scene>
+    
+  </body>
+</html>
